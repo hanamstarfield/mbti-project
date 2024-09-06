@@ -13,19 +13,28 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      <Link to="/">홈</Link>
-      <div>
-        {user ? (
-          <>
-            <button>로그아웃</button>
-            <button>프로필</button>
-            <button>테스트</button>
-            <button>결과 보기</button>
-          </>
-        ) : (
-          <Link to="/login">로그링</Link>
-        )}
-      </div>
+      <header>
+        <Link to="/">홈</Link>
+        <div>
+          {user ? (
+            <>
+              <Link to="/profile">
+                <button>프로필</button>
+              </Link>
+              <Link to="/testpage">
+                <button>테스트</button>
+              </Link>
+              <Link to="/testresultpage">
+                <button>결과보기</button>
+              </Link>
+              <button>로그아웃</button>
+            </>
+          ) : (
+            <Link to="/login">로그인</Link>
+          )}
+        </div>
+      </header>
+      <main>{children}</main>
     </div>
   );
 };
