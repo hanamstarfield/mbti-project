@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [userData, setUserdata] = useState({
-    username: "",
+  const [userData, setUserData] = useState({
+    nickname: "",
     id: "",
     password: "",
   });
@@ -16,10 +16,9 @@ const Signup = () => {
 
     if (success) {
       alert(message);
-      navigate("/");
+      navigate("/login");
     } else {
       alert(message);
-      return;
     }
   };
 
@@ -29,9 +28,9 @@ const Signup = () => {
         <p>닉네임</p>
         <input
           type="text"
-          value={userData.username}
+          value={userData.nickname}
           onChange={(e) =>
-            setUserdata({ ...userData, username: e.target.value })
+            setUserData({ ...userData, nickname: e.target.value })
           }
           required
         />
@@ -39,7 +38,7 @@ const Signup = () => {
         <input
           type="text"
           value={userData.id}
-          onChange={(e) => setUserdata({ ...userData, id: e.target.value })}
+          onChange={(e) => setUserData({ ...userData, id: e.target.value })}
           required
         />
         <p>패스워드</p>
@@ -47,7 +46,7 @@ const Signup = () => {
           type="password"
           value={userData.password}
           onChange={(e) =>
-            setUserdata({ ...userData, password: e.target.value })
+            setUserData({ ...userData, password: e.target.value })
           }
           required
         />

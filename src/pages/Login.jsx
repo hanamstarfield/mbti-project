@@ -1,39 +1,50 @@
-import { useContext, useState } from "react";
-import { auth, login } from "../api/auth";
+import { useState } from "react";
+import { login } from "../api/auth";
+import useUserStore from "../zustand/useUserStore";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [userdata, setUserdata] = useState({
+  const navigate = useNavigate();
+  const { loginUser } = useUserStore();
+  const [userData, setUserData] = useState({
     id: "",
     password: "",
   });
 
   const onSubmitHandle = async (e) => {
-    e.prventDEfault();
-    const data = await login(userdata);
+    e.preventDefault();
+    const data = await login(userData);
 
     if (data.success) {
       alert("로그인 성공!");
+      loginUser(data);
+      navigate("/");
+    } else {
+      alert(data.message);
+      return;
     }
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmitHandle}>
         <input
           type="text"
-          value={id}
+          value={userData.id}
           onChange={(e) => {
-            setId(e.target.value);
+            setUserData({ ...userData, id: e.target.value });
           }}
+          required
         />
         <input
           type="password"
-          value={password}
+          value={userData.password}
           onChange={(e) => {
-            setPassword(e.target.value);
+            setUserData({ ...userData, password: e.target.value });
           }}
+          required
         />
-        <button>로그인</button>
+        <button type="submit">로그인</button>
       </form>
     </div>
   );
