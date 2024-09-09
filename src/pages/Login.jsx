@@ -21,7 +21,6 @@ const Login = () => {
       navigate("/");
     } else {
       alert(data.message);
-      return;
     }
   };
 

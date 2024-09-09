@@ -17,9 +17,9 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div>
-      <header>
-        <nav>
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-gray-500 text-white p-4">
+        <nav className="container mx-auto flex justify-between items-center">
           <Link to="/">홈</Link>
 
           {user?.success ? (
