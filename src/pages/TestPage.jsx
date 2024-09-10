@@ -6,12 +6,13 @@ import useUserStore from "../zustand/useUserStore";
 
 const Test = () => {
   const navigate = useNavigate();
-  const { user } = useUserStore((state) => state);
+  const { user } = useUserStore();
+  console.log("user=>", user);
 
   const handleTestSubmit = async (answers) => {
     const result = calculateMBTI(answers);
     const resultData = {
-      userId: user.id,
+      userId: user.userId,
       nickname: user.nickname,
       result,
       answers,
