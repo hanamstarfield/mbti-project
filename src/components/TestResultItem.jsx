@@ -32,7 +32,7 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
   const handleToggleVisibility = async () => {
     try {
       const newVisibility = !result.visibility;
-      await updateTestResultVisibility(result.userId, newVisibility);
+      await updateTestResultVisibility(result.id, newVisibility);
       onUpdate(); // 부모 컴포넌트에서 결과 목록을 다시 불러오도록 요청
     } catch (error) {
       console.error("Visibility toggle failed:", error);
@@ -42,13 +42,17 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-      await deleteTestResult(result.userId);
+      await deleteTestResult(result.id);
       onDelete(); // 부모 컴포넌트에서 결과 목록을 다시 불러오도록 요청
     } catch (error) {
       console.error("Delete failed:", error);
       alert("Delete failed. Please try again.");
     }
   };
+
+  console.log("result.userId:", result.id);
+  console.log("user.id:", user.userId);
+  console.log("isOwner:", isOwner);
 
   return (
     <div className="p-6 bg-gray-800 rounded-lg shadow-lg text-white">
