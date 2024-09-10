@@ -12,16 +12,20 @@ export const login = async (userData) => {
   return response.data;
 };
 
-export const getUserProfile = async (token) => {
+export const getUserProfile = async (accessToken) => {
   const response = await axios.get(`${API_URL}/profile`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
   return response.data;
 };
 
-export const updateProfile = async (formData) => {
-  const response = await axios.patch(`${API_URL}/profile`, formData);
+export const updateProfile = async (formData, accessToken) => {
+  const response = await axios.patch(`${API_URL}/profile`, formData, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
   return response.data;
 };

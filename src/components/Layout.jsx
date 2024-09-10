@@ -17,10 +17,13 @@ const Layout = ({ children }) => {
 
           {user?.success ? (
             <>
-              <Link to="/profile">프로필</Link>
-              <Link to="/testpage">테스트</Link>
-              <Link to="/testresultpage">결과보기</Link>
-              <button onClick={handleLogout}>로그아웃</button>
+              <p>안녕하세요!{user.nickname}님!</p>
+              <div>
+                <Link to="/profile">프로필</Link>
+                <Link to="/testpage">테스트</Link>
+                <Link to="/testresultpage">결과보기</Link>
+                <button onClick={handleLogout}>로그아웃</button>
+              </div>
             </>
           ) : (
             <>
