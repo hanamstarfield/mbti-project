@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import useUserStore from "../zustand/useUserStore";
+import { useUserStore } from "../zustand/useUserStore";
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useUserStore();

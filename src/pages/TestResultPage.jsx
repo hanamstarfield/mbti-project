@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useUserStore from "../zustand/useUserStore";
+import { useUserStore } from "../zustand/useUserStore";
 import axios from "axios";
 import TestResultList from "../components/TestResultList";
 

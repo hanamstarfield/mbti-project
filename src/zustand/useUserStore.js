@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 const useUserStore = create((set) => ({
   user: JSON.parse(sessionStorage.getItem("user")) || null,
@@ -17,4 +17,4 @@ const useUserStore = create((set) => ({
     set({ user: null });
   },
 }));
-export default useUserStore;
+export { useUserStore };

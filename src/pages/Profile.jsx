@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useUserStore from "../zustand/useUserStore";
+import { useUserStore } from "../zustand/useUserStore";
 import { updateProfile } from "../api/auth";
 
 const Profile = () => {

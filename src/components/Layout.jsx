@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useUserStore from "../zustand/useUserStore";
+import { useUserStore } from "../zustand/useUserStore";
 
 const Layout = ({ children }) => {
   const { user, logoutUser } = useUserStore();
@@ -7,6 +7,7 @@ const Layout = ({ children }) => {
   const handleLogout = () => {
     alert("로그아웃!");
     logoutUser();
+    return <Navigate to="/" />;
   };
 
   return (
