@@ -23,7 +23,7 @@ const mbtiDescriptions = {
 };
 
 const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
-  const isOwner = result.userId === user.id;
+  const isOwner = result.userId === user.userId;
 
   const formattedDate = new Date(result.date).toLocaleString();
   const description =
@@ -32,7 +32,7 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
   const handleToggleVisibility = async () => {
     try {
       const newVisibility = !result.visibility;
-      await updateTestResultVisibility(result.id, newVisibility);
+      await updateTestResultVisibility(result.userId, newVisibility);
       onUpdate(); // 부모 컴포넌트에서 결과 목록을 다시 불러오도록 요청
     } catch (error) {
       console.error("Visibility toggle failed:", error);
@@ -42,7 +42,7 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-      await deleteTestResult(result.id);
+      await deleteTestResult(result.userId);
       onDelete(); // 부모 컴포넌트에서 결과 목록을 다시 불러오도록 요청
     } catch (error) {
       console.error("Delete failed:", error);
