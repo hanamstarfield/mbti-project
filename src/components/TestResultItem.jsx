@@ -50,10 +50,6 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
     }
   };
 
-  console.log("result.userId:", result.id);
-  console.log("user.id:", user.userId);
-  console.log("isOwner:", isOwner);
-
   return (
     <div className="p-6 bg-gray-800 rounded-lg shadow-lg text-white">
       <div className="flex justify-between items-center border-b border-gray-700 pb-3 mb-3">
